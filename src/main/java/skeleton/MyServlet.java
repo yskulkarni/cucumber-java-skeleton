@@ -14,11 +14,12 @@ public class MyServlet extends HttpServlet {
     private static final Gson GSON = new Gson();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Map<String, String> result = new HashMap<String, String>();
-        result.put("hello", "world");
+        Map<String, String> data = new HashMap<String, String>();
+        data.put("hello", "world");
+        String json = GSON.toJson(data);
 
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println(GSON.toJson(result));
+        response.getWriter().println(json);
     }
 }
